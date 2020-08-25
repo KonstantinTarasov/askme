@@ -15,14 +15,10 @@ class User < ApplicationRecord
   validates :password, presence: true, on: :create
   validates_confirmation_of :password
 
-  validates :username, :length => { :minimum => 3 }
-  validates :username, :length => { :maximum => 40 }
+  validates :username, length: { in: 3..40 }
 
-  # validates_each :username do |record, attr, value|
-  #  record.errors.add(attr, 'введите правильно!') unless value =~ /[a-z0-9]+\w/
-  #end
-  # validates :username, :format => { :with => / [a-z0-9]+\w / }
-  # validates :email, :format => { :with => / ^[a-z0-9]+@[a-z0-9]+\.[a-z]+ / }
+   validates :username, format: { with: /[a-z0-9]+\w/}
+   validates :email, format: { with: /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+/ }
 
   before_save :encrypt_password
   # Шифруем пароль, если он задан
@@ -76,7 +72,4 @@ class User < ApplicationRecord
     # Иначе, возвращаем nil
     nil
   end
-
-
-
 end
