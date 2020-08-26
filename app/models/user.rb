@@ -17,8 +17,8 @@ class User < ApplicationRecord
 
   validates :username, length: { in: 3..40 }
 
-   validates :username, format: { with: /[a-z0-9]+\w/}
-   validates :email, format: { with: /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+/ }
+   validates :username, format: { with: /\A\w+\z/}
+   validates :email, format: { with: /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+\z/ }
 
   before_save :encrypt_password
   # Шифруем пароль, если он задан
