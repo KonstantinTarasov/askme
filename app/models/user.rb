@@ -17,8 +17,17 @@ class User < ApplicationRecord
 
   validates :username, length: { in: 3..40 }
 
-   validates :username, format: { with: /\A\w+\z/}
-   validates :email, format: { with: /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+\z/ }
+  validates :username, format: { with: /\A\w+\z/ }
+  validates :email, format: { with: /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+\z/ }
+
+  validates :username, uniqueness: true
+
+  before_validation :normalize_name, on: :create
+
+  private
+  def normalize_name
+    self.username = username.downcase
+  end
 
   before_save :encrypt_password
   # Шифруем пароль, если он задан
