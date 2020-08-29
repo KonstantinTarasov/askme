@@ -1,32 +1,31 @@
 require 'openssl'
 
 class User < ApplicationRecord
+  VALID_EMAIL_REGEX = /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+\z/
+  VALID_USERNAME_REGEX = /\A\w+\z/
   # параметры работы модля шифрования паролей
   ITERATIONS = 2000
   DIGEST = OpenSSL::Digest::SHA256.new
 
+  attr_accessor :password
+
   has_many :questions
+
+  before_save :normalize_name
 
   validates :email, :username, presence: true
   validates :email, :username, uniqueness: true
 
-  attr_accessor :password
-
   validates :password, presence: true, on: :create
-  validates_confirmation_of :password
+  validates :password, confirmation: true
 
   validates :username, length: { in: 3..40 }
-
-  validates :username, format: { with: /\A\w+\z/ }
-  validates :email, format: { with: /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+\z/ }
-
-  validates :username, uniqueness: true
-
-  before_validation :normalize_name, on: :create
+  validates :username, format: { with: VALID_USERNAME_REGEX }
+  validates :email, format: { with: VALID_EMAIL_REGEX }
 
   private
   def normalize_name
-    self.username = username.downcase
+    username&.downcase!
   end
 
   before_save :encrypt_password
