@@ -13,16 +13,19 @@ class User < ApplicationRecord
 
   before_save :normalize_name
 
-  validates :email, :username, presence: true
-  validates :email, :username, uniqueness: true
+  validates :username, presence: true,
+            uniqueness: true,
+            length: { in: 3..40 },
+            format: { with: VALID_USERNAME_REGEX }
 
-  validates :password, presence: true, on: :create
-  validates :password, confirmation: true
+  validates :email, presence: true,
+            uniqueness: true,
+            format: { with: VALID_EMAIL_REGEX }
 
-  validates :username, length: { in: 3..40 }
-  validates :username, format: { with: VALID_USERNAME_REGEX }
-  validates :email, format: { with: VALID_EMAIL_REGEX }
-
+  validates :password, presence: true,
+            on: :create,
+            confirmation: true
+  
   private
   def normalize_name
     username&.downcase!
