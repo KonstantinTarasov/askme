@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_many :questions
 
-  before_save :normalize_name
+  before_validation :normalize_params
 
   validates :username, presence: true,
             uniqueness: true,
@@ -25,11 +25,6 @@ class User < ApplicationRecord
   validates :password, presence: true,
             on: :create,
             confirmation: true
-  
-  private
-  def normalize_name
-    username&.downcase!
-  end
 
   before_save :encrypt_password
   # Шифруем пароль, если он задан
@@ -82,5 +77,20 @@ class User < ApplicationRecord
 
     # Иначе, возвращаем nil
     nil
+  end
+
+  private
+
+  def normalize_params
+    normalize_name
+    downcase_email
+  end
+
+  def normalize_name
+    username&.downcase!
+  end
+
+  def downcase_email
+    email&.downcase!
   end
 end
