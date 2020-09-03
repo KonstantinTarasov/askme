@@ -27,25 +27,6 @@ class User < ApplicationRecord
             confirmation: true
 
   before_save :encrypt_password
-  # Шифруем пароль, если он задан
-  def encrypt_password
-    if password.present?
-      # Создаем т. н. «соль» — рандомная строка усложняющая задачу хакерам по
-      # взлому пароля, даже если у них окажется наша база данных.
-      self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
-
-      # Создаем хэш пароля — длинная уникальная строка, из которой невозможно
-      # восстановить исходный пароль. Однако, если правильный пароль у нас есть,
-      # мы легко можем получить такую же строку и сравнить её с той, что в базе.
-      self.password_hash = User.hash_to_string(
-          OpenSSL::PKCS5.pbkdf2_hmac(
-              password, password_salt, ITERATIONS, DIGEST.length, DIGEST
-          )
-      )
-
-      # Оба поля окажутся записанными в базу при сохранении (save).
-    end
-  end
 
   # Служебный метод, преобразующий бинарную строку в 16-ричный формат,
   # для удобства хранения.
@@ -58,7 +39,7 @@ class User < ApplicationRecord
   # пользователя. Если нету — возвращает nil.
   def self.authenticate(email, password)
     # Сперва находим кандидата по email
-    user = find_by(email: email)
+    user = find_by(email: email&.downcase!)
 
     # Если пользователь не найдет, возвращаем nil
     return nil unless user.present?
@@ -80,6 +61,26 @@ class User < ApplicationRecord
   end
 
   private
+
+  # Шифруем пароль, если он задан
+  def encrypt_password
+    if password.present?
+      # Создаем т. н. «соль» — рандомная строка усложняющая задачу хакерам по
+      # взлому пароля, даже если у них окажется наша база данных.
+      self.password_salt = User.hash_to_string(OpenSSL::Random.random_bytes(16))
+
+      # Создаем хэш пароля — длинная уникальная строка, из которой невозможно
+      # восстановить исходный пароль. Однако, если правильный пароль у нас есть,
+      # мы легко можем получить такую же строку и сравнить её с той, что в базе.
+      self.password_hash = User.hash_to_string(
+          OpenSSL::PKCS5.pbkdf2_hmac(
+              password, password_salt, ITERATIONS, DIGEST.length, DIGEST
+          )
+      )
+
+      # Оба поля окажутся записанными в базу при сохранении (save).
+    end
+  end
 
   def normalize_params
     normalize_name
