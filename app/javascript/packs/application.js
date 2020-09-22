@@ -5,7 +5,6 @@
 
 require("@rails/ujs").start()
 require("jquery").start()
-require("jquery_ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 
@@ -18,8 +17,8 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 $(function(){
-    $('#ask-button').click(function(){
-        $('#ask-form').slideToggle(300);
-        return false;
-    });
+  $('#ask-button').click(function(){
+    $('#ask-form').slideToggle(300);
+    return false;
+  });
 });

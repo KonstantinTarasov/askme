@@ -60,6 +60,11 @@
 <div class="column-3-4">
   <div class="user-questions buffer-both">
     <div class="questions-list">
+      <div class="question_number">
+        <%= "Вам задали" %>
+        <%= number = @number_questions %>
+        <%= number_questions(number, 'вопрос', 'вопроса', 'вопросов') %>
+      </div>
       <%# Обратите внимание, как мы делаем цикл по всем вопросам, точно %>
       <%# также, как мы делали циклы в ruby %>
       <% @questions.each do |question| %>
