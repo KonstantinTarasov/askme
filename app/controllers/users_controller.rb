@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :load_user, except: [:index, :create, :new]
 
   before_action :authorize_user, except: [:index, :create, :new, :show]
@@ -41,6 +40,8 @@ class UsersController < ApplicationController
     @new_question = @user.questions.build
 
     @number_questions = @user.questions.count
+    @number_answer = @questions.where.not(answer: nil).count
+    @unanswered = @number_questions - @number_answer
   end
 
   private

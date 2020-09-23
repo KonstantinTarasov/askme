@@ -16,7 +16,7 @@ module ApplicationHelper
   def number_questions(number, enot, enota, enotov)
     ostatok = number % 10
 
-    return enotov if number.between?(11, 14) || (number % 100).between?(11, 14)
+    return enotov if (number % 100).between?(11, 14)
 
     return enot if ostatok == 1
 
