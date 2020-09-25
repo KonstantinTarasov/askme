@@ -6023,3 +6023,69 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 36ms (Views: 29.0ms | ActiveRecord: 1.1ms | Allocations: 17619)
 
 
+Started GET "/" for 127.0.0.1 at 2020-09-25 19:10:21 +0500
+  [1m[35m (11.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (12.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 388.4ms | Allocations: 19121)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+Completed 200 OK in 660ms (Views: 528.5ms | ActiveRecord: 13.7ms | Allocations: 33928)
+
+
+Started GET "/log_out" for 127.0.0.1 at 2020-09-25 19:10:26 +0500
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 357)
+
+
+Started GET "/" for 127.0.0.1 at 2020-09-25 19:10:26 +0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2736)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 17.7ms | ActiveRecord: 0.2ms | Allocations: 12697)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2020-09-25 19:10:28 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (24.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:78
+  Rendered questions/_question.html.erb (Duration: 5.9ms | Allocations: 484)
+  Rendered questions/_question.html.erb (Duration: 0.3ms | Allocations: 89)
+  Rendered questions/_question.html.erb (Duration: 0.2ms | Allocations: 89)
+  Rendered users/show.html.erb within layouts/application (Duration: 176.1ms | Allocations: 6238)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 478ms (Views: 191.2ms | ActiveRecord: 26.4ms | Allocations: 24892)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (28.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2020-09-25 19:12:00 +0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 24.2ms | Allocations: 7884)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 36.4ms | ActiveRecord: 1.5ms | Allocations: 19319)
+
+
