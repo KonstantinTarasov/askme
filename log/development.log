@@ -6040,3 +6040,97 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 766ms (Views: 747.2ms | ActiveRecord: 1.2ms | Allocations: 32898)
 
 
+Started GET "/" for 127.0.0.1 at 2020-09-25 17:16:26 +0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 70.1ms | Allocations: 20032)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 139ms (Views: 128.0ms | ActiveRecord: 1.1ms | Allocations: 36969)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2020-09-25 17:16:28 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:78
+  Rendered questions/_question.html.erb (Duration: 2.5ms | Allocations: 484)
+  Rendered questions/_question.html.erb (Duration: 0.4ms | Allocations: 89)
+  Rendered questions/_question.html.erb (Duration: 1.1ms | Allocations: 89)
+  Rendered users/show.html.erb within layouts/application (Duration: 28.7ms | Allocations: 6253)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 77ms (Views: 41.6ms | ActiveRecord: 2.3ms | Allocations: 25218)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2020-09-25 17:16:32 +0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 734)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 37.4ms | ActiveRecord: 0.0ms | Allocations: 11147)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-09-25 17:16:35 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"Os7M6gPv3wuN+BlGPSnPXhoHSga4N8DrqaUhOBX/9X9wZERrfQrRV34iR+K3ApoPUQc/z/gA5Nu9FWvEMLdNsA==", "email"=>"agent555@mail.ru", "password"=>"[FILTERED]", "commit"=>"Войти"}
+  [1m[36mUser Load (34.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "agent555@mail.ru"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `authenticate'
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 282)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 15.1ms | ActiveRecord: 34.9ms | Allocations: 10986)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-09-25 17:16:39 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"n+v9+h5PLBb9eyv/8KEuIvrj4YgeFhBGmQ8to133eozVQXV7YKoiSg6hdVt6intzseOUQV4hNHaNv2dfeL/CQw==", "email"=>"agent555@mail.ru", "password"=>"[FILTERED]", "commit"=>"Войти"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "agent555@mail.ru"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `authenticate'
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.2ms | Allocations: 889)
+
+
+Started GET "/" for 127.0.0.1 at 2020-09-25 17:16:39 +0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2741)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+Completed 200 OK in 27ms (Views: 25.7ms | ActiveRecord: 0.4ms | Allocations: 13379)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2020-09-25 17:16:41 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 2]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 2]]
+  ↳ app/views/users/show.html.erb:78
+  Rendered questions/_question.html.erb (Duration: 0.8ms | Allocations: 195)
+  Rendered questions/_question.html.erb (Duration: 0.7ms | Allocations: 186)
+  Rendered questions/_question.html.erb (Duration: 0.5ms | Allocations: 186)
+  Rendered users/show.html.erb within layouts/application (Duration: 17.3ms | Allocations: 4094)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 44ms (Views: 35.1ms | ActiveRecord: 1.2ms | Allocations: 15953)
+
+
