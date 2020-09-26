@@ -93,7 +93,7 @@ GEM
     nio4r (2.5.2)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
-    pg (1.2.3)
+    postgres-pr (0.7.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -167,7 +167,7 @@ DEPENDENCIES
   byebug
   jquery-rails
   listen (~> 3.2)
-  pg
+  postgres-pr
   rails (~> 6.0.3, >= 6.0.3.2)
   sqlite3 (~> 1.4)
   uglifier
