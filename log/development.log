@@ -6206,3 +6206,536 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 463ms (Views: 207.2ms | ActiveRecord: 16.4ms | Allocations: 25285)
 
 
+Started GET "/" for 127.0.0.1 at 2020-09-27 22:59:47 +0500
+  [1m[35m (22.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (11.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 634.7ms | Allocations: 19115)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1278ms (Views: 1100.5ms | ActiveRecord: 13.0ms | Allocations: 32922)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2020-09-27 22:59:52 +0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 18.6ms | Allocations: 758)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 35.5ms | ActiveRecord: 0.0ms | Allocations: 11166)
+
+
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (26.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (94.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (111.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20200819075054)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "username" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200819075054"]]
+  [1m[35m (97.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateQuestions (20200819080043)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "questions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "text" varchar, "answer" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200819080043"]]
+  [1m[35m (141.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddEmailPasswordToUser (20200819164421)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "email" varchar[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "password_hash" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "password_salt" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "avatar_url" varchar[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200819164421"]]
+  [1m[35m (66.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddUserToQuestion (20200820130636)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquestions" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "answer" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquestions" ("id","text","answer","created_at","updated_at")
+                     SELECT "id","text","answer","created_at","updated_at" FROM "questions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "questions" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "answer" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "questions" ("id","text","answer","created_at","updated_at")
+                     SELECT "id","text","answer","created_at","updated_at" FROM "aquestions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aquestions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_user_id" ON "questions" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aquestions" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "answer" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "tindex_aquestions_on_user_id" ON "aquestions" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aquestions" ("id","text","answer","created_at","updated_at","user_id")
+                     SELECT "id","text","answer","created_at","updated_at","user_id" FROM "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "questions"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "questions" ("id" integer NOT NULL PRIMARY KEY, "text" varchar DEFAULT NULL, "answer" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "user_id" integer NOT NULL, CONSTRAINT "fk_rails_047ab75908"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_questions_on_user_id" ON "questions" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "questions" ("id","text","answer","created_at","updated_at","user_id")
+                     SELECT "id","text","answer","created_at","updated_at","user_id" FROM "aquestions"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "aquestions"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200820130636"]]
+  [1m[35m (115.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddIndexToUser (20200903200352)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_username" ON "users" ("username")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200903200352"]]
+  [1m[35m (103.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-09-27 18:02:01.776188"], ["updated_at", "2020-09-27 18:02:01.776188"]]
+  [1m[35m (79.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2020-09-27 23:02:56 +0500
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1473)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 51.0ms | ActiveRecord: 0.8ms | Allocations: 26075)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2020-09-27 23:02:58 +0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 769)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 34.7ms | ActiveRecord: 0.0ms | Allocations: 11174)
+
+
+Started GET "/" for 127.0.0.1 at 2020-09-27 23:03:01 +0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 596)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.1ms | Allocations: 10611)
+
+
+Started GET "/" for 127.0.0.1 at 2020-09-27 23:59:53 +0500
+  [1m[35m (11.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (23.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 59.9ms | Allocations: 1473)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 642ms (Views: 520.4ms | ActiveRecord: 23.5ms | Allocations: 26079)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2020-09-27 23:59:57 +0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 78.2ms | Allocations: 1765)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 113ms (Views: 94.8ms | ActiveRecord: 0.7ms | Allocations: 16678)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-09-28 00:00:20 +0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"fB5dEkpvxLCtQarilhW884/KAfXn0tnPfDvEU/8yWyyW23Jun6IqkIXG9njgg4XeHzm8TwCOFPnMgD0mCb2iCg==", "user"=>{"email"=>"agent555@mail.ru", "username"=>"Kuzja", "name"=>"Петр", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Зарегистрироваться", "exect"=>[:destroy]}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (12.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = ? LIMIT ?[0m  [["username", "kuzja"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "agent555@mail.ru"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (11.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "username", "created_at", "updated_at", "email", "password_hash", "password_salt") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Петр"], ["username", "kuzja"], ["created_at", "2020-09-27 19:00:20.458628"], ["updated_at", "2020-09-27 19:00:20.458628"], ["email", "agent555@mail.ru"], ["password_hash", "787b191e249d64ec1a73bbb147283ff1e89958a38adc9cfda49aa34b96f60af8"], ["password_salt", "25894854686a273baf9f1b8341101ad3"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[35m (76.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 144ms (ActiveRecord: 100.7ms | Allocations: 6726)
+
+
+Started GET "/" for 127.0.0.1 at 2020-09-28 00:00:20 +0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 37.1ms | Allocations: 2100)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 53ms (Views: 52.3ms | ActiveRecord: 0.2ms | Allocations: 12052)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:00:22 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (25.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:78
+  Rendered users/show.html.erb within layouts/application (Duration: 172.4ms | Allocations: 4910)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 453ms (Views: 184.7ms | ActiveRecord: 27.1ms | Allocations: 25137)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:18:21 +0500
+  [1m[35m (15.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (18.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered users/show.html.erb within layouts/application (Duration: 237.1ms | Allocations: 3485)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 917ms (Views: 884.3ms | ActiveRecord: 20.5ms | Allocations: 16618)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:18:41 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered users/show.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2668)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 114ms (Views: 106.5ms | ActiveRecord: 0.8ms | Allocations: 14521)
+
+
+Started POST "/questions" for 127.0.0.1 at 2020-09-28 00:18:55 +0500
+Processing by QuestionsController#create as HTML
+  Parameters: {"authenticity_token"=>"9UXEheIUiqA7Zkru12fNDpDlWwEzgtZnKGOBThfp+14fgOv5N9lkgBPhFnSh8fQjABbmu9TeG1GY2Hg74WYCeA==", "question"=>{"user_id"=>"1", "text"=>"Как дела ?"}, "commit"=>"Задать вопрос"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/questions_controller.rb:14:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:14:in `create'
+  [1m[36mQuestion Create (164.9ms)[0m  [1m[32mINSERT INTO "questions" ("text", "created_at", "updated_at", "user_id") VALUES (?, ?, ?, ?)[0m  [["text", "Как дела ?"], ["created_at", "2020-09-27 19:18:56.956612"], ["updated_at", "2020-09-27 19:18:56.956612"], ["user_id", 1]]
+  ↳ app/controllers/questions_controller.rb:14:in `create'
+  [1m[35m (191.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/questions_controller.rb:14:in `create'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 390ms (ActiveRecord: 356.9ms | Allocations: 5296)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:18:57 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 33.3ms | Allocations: 476)
+  Rendered users/show.html.erb within layouts/application (Duration: 40.7ms | Allocations: 3387)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 60ms (Views: 52.9ms | ActiveRecord: 0.8ms | Allocations: 15270)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:19:56 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:96
+  Rendered questions/_question.html.erb (Duration: 1.7ms | Allocations: 432)
+  Rendered users/show.html.erb within layouts/application (Duration: 11.5ms | Allocations: 4239)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 34.6ms | ActiveRecord: 1.2ms | Allocations: 17349)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:21:50 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:96
+  Rendered questions/_question.html.erb (Duration: 1.7ms | Allocations: 432)
+  Rendered users/show.html.erb within layouts/application (Duration: 19.4ms | Allocations: 4244)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 50.9ms | ActiveRecord: 1.1ms | Allocations: 17354)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:22:26 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:82
+  Rendered questions/_question.html.erb (Duration: 1.5ms | Allocations: 432)
+  Rendered users/show.html.erb within layouts/application (Duration: 11.3ms | Allocations: 4098)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 29.0ms | ActiveRecord: 0.9ms | Allocations: 17206)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:23:11 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 1.5ms | Allocations: 432)
+  Rendered users/show.html.erb within layouts/application (Duration: 12.9ms | Allocations: 4106)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 40ms (Views: 29.7ms | ActiveRecord: 1.1ms | Allocations: 17223)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:26:21 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 0.4ms | Allocations: 88)
+  Rendered users/show.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2832)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 22.7ms | ActiveRecord: 0.9ms | Allocations: 14706)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:26:23 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 0.4ms | Allocations: 88)
+  Rendered users/show.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2828)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 29.2ms | ActiveRecord: 0.9ms | Allocations: 14685)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:27:25 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 0.5ms | Allocations: 88)
+  Rendered users/show.html.erb within layouts/application (Duration: 8.3ms | Allocations: 2838)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 21.2ms | ActiveRecord: 1.0ms | Allocations: 14713)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:51:44 +0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 0.4ms | Allocations: 88)
+  Rendered users/show.html.erb within layouts/application (Duration: 8.3ms | Allocations: 2853)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 20.2ms | ActiveRecord: 1.2ms | Allocations: 14747)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 00:51:47 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 0.4ms | Allocations: 88)
+  Rendered users/show.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2825)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 21.7ms | ActiveRecord: 1.0ms | Allocations: 14684)
+
+
+Started GET "/log_in" for 127.0.0.1 at 2020-09-28 01:09:31 +0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 11.9ms | Allocations: 749)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 28.8ms | ActiveRecord: 0.0ms | Allocations: 11119)
+
+
+Started POST "/sessions" for 127.0.0.1 at 2020-09-28 01:09:36 +0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"Z62sevIINpgbGqUG1c1P4wTXa+ZmNuU511JAMpa1WFqNaIMGJ8XYuDOd+ZyjW3bOlCTWXIFqKA9n6blHYDqhfA==", "email"=>"agent555@mail.ru", "password"=>"[FILTERED]", "commit"=>"Войти"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "agent555@mail.ru"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:42:in `authenticate'
+Redirected to http://localhost:3000/
+Completed 302 Found in 11ms (ActiveRecord: 0.4ms | Allocations: 1029)
+
+
+Started GET "/" for 127.0.0.1 at 2020-09-28 01:09:36 +0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:8
+  Rendered users/index.html.erb within layouts/application (Duration: 36.7ms | Allocations: 2199)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+Completed 200 OK in 72ms (Views: 70.2ms | ActiveRecord: 0.8ms | Allocations: 12976)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 01:09:39 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 0.8ms | Allocations: 192)
+  Rendered users/show.html.erb within layouts/application (Duration: 10.3ms | Allocations: 3561)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 23.9ms | ActiveRecord: 1.2ms | Allocations: 15420)
+
+
+Started GET "/questions/1/edit" for 127.0.0.1 at 2020-09-28 01:09:42 +0500
+Processing by QuestionsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:41:in `load_question'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:45:in `authorize_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+  Rendering questions/edit.html.erb within layouts/application
+  Rendered questions/_form.html.erb (Duration: 3.1ms | Allocations: 985)
+  Rendered questions/edit.html.erb within layouts/application (Duration: 30.8ms | Allocations: 1313)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 59ms (Views: 50.3ms | ActiveRecord: 0.4ms | Allocations: 13708)
+
+
+Started PATCH "/questions/1" for 127.0.0.1 at 2020-09-28 01:09:55 +0500
+Processing by QuestionsController#update as HTML
+  Parameters: {"authenticity_token"=>"wqyNs2k5f12EkOmSGKOxcEi71LzH/dhUUhNPYGcfuxYoaaLPvPSRfawXtQhuNYhd2EhpBiChFWLiqLYVkZBCMA==", "question"=>{"user_id"=>"1", "text"=>"Как дела ?", "answer"=>"норм"}, "commit"=>"Сохранить", "id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:41:in `load_question'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:45:in `authorize_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/questions_controller.rb:23:in `update'
+  [1m[36mQuestion Update (0.4ms)[0m  [1m[33mUPDATE "questions" SET "answer" = ?, "updated_at" = ? WHERE "questions"."id" = ?[0m  [["answer", "норм"], ["updated_at", "2020-09-27 20:09:55.422837"], ["id", 1]]
+  ↳ app/controllers/questions_controller.rb:23:in `update'
+  [1m[35m (77.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/questions_controller.rb:23:in `update'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 341ms (ActiveRecord: 78.7ms | Allocations: 5722)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2020-09-28 01:09:55 +0500
+Processing by UsersController#show as HTML
+  Parameters: {"exect"=>[:destroy], "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:54:in `load_user'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ?[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:42:in `show'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "questions" WHERE "questions"."user_id" = ? AND "questions"."answer" IS NOT NULL[0m  [["user_id", 1]]
+  ↳ app/controllers/users_controller.rb:43:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:9:in `current_user'
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT "questions".* FROM "questions" WHERE "questions"."user_id" = ? ORDER BY "questions"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:83
+  Rendered questions/_question.html.erb (Duration: 0.7ms | Allocations: 190)
+  Rendered users/show.html.erb within layouts/application (Duration: 9.6ms | Allocations: 3573)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 22.6ms | ActiveRecord: 1.2ms | Allocations: 15459)
+
+

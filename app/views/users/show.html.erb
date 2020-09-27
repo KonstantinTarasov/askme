@@ -22,10 +22,28 @@
     <%# Выводим никнейм пользователя с символом «@» перед ним. %>
     @<%= @user.username %>
   </h2>
+</div>
 
+<div class="user-details">
   <div class="user-ask-button container text-center">
-    <%# Используем встроенный в rails хелпер link_to %>
     <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
+  </div>
+
+  <%# Выводим счетчики вопросов в три колонки. Обратите внимание, что тут %>
+  <%# в пору использовать наш любимый склонятор. На эту тему смотрите ДЗ. %>
+  <div class="user-statistics container text-center">
+    <div class="column-1-3">
+      <h1 class="title-small"><%= @number_questions %></h1>
+      <p>вопросов</p>
+    </div>
+    <div class="column-1-3">
+      <h1 class="title-small"><%= @number_answer %></h1>
+      <p>ответов</p>
+    </div>
+    <div class="column-1-3">
+      <h1 class="title-small"><%= @unanswered %></h1>
+      <p>безответных</p>
+    </div>
   </div>
 </div>
 
@@ -60,19 +78,6 @@
 <div class="column-3-4">
   <div class="user-questions buffer-both">
     <div class="questions-list">
-      <div class="question_number">
-        <%= "Заданно" %>
-        <%= @number_questions %>
-        <%= number_questions(@number_questions, 'вопрос', 'вопроса', 'вопросов') %>
-      </div>
-      <div class="question_number">
-        <%= "С ответом" %>
-        <%= @number_answer %>
-      </div>
-      <div class="question_number">
-        <%= "Без ответа" %>
-        <%= @unanswered %>
-      </div>
       <%# Обратите внимание, как мы делаем цикл по всем вопросам, точно %>
       <%# также, как мы делали циклы в ruby %>
       <% @questions.each do |question| %>
