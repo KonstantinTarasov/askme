@@ -9,6 +9,8 @@ gem 'webpacker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 
+gem 'rails_12factor'
+
 gem 'uglifier'
 
 # Use jquery as the JavaScript library
