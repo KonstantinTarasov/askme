@@ -60,6 +60,16 @@
       <div class="form-action buffer-top">
         <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
       </div>
+
+      <div class="form-action buffer-top">
+        <%= link_to image_tag(user_avatar(@user), class: 'user-image') %>
+        <li>
+          <%= link_to @user.name, @user %> |
+          <%= link_to 'Хорошие вопросы', root_path %> |
+          <%= link_to 'Удалить аккаунт', @user, method: :delete,
+                      data: { confirm: "Вы уверены ?" } %>
+        </li>
+      </div>
     <% end %>
 
     <%# Подробнее про помощники для создания форм: %>

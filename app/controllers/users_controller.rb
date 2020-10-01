@@ -45,6 +45,12 @@ class UsersController < ApplicationController
     @unanswered = @number_questions - @number_answer
   end
 
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "Пользователь удален"
+    redirect_to users_path
+  end
+
   private
 
   def authorize_user
