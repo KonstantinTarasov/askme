@@ -3,7 +3,7 @@ require 'openssl'
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[a-z0-9]+@[a-z0-9]+\.[a-z]+\z/
   VALID_USERNAME_REGEX = /\A\w+\z/
-  VALID_BACKGROUND_REGEX = /\A\#[a-fA-F0-9]{6}\z/
+  VALID_BACKGROUND_REGEX = /\A#[a-f0-9]{6}\z/
   # параметры работы модля шифрования паролей
   ITERATIONS = 2000
   DIGEST = OpenSSL::Digest::SHA256.new
