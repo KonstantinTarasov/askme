@@ -1,24 +1,19 @@
-# README
+# Хорошие вопросы
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Cоциальная сеть, предназначеная для задания вопросов пользователю и возможностью ответа на них.
 
-Things you may want to cover:
+### Версия Ruby
 
-* Ruby version
+* 2.7.0
 
-* System dependencies
+### Инструкция по развертыванию
 
-* Configuration
+* bundle
+* yarn install
+* rake db:migrate
+* rails s
+* 0.0.0.0:3000
 
-* Database creation
+### Приложение на Heroku
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Хорошие вопросы](https://super-askme.herokuapp.com/)
